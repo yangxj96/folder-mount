@@ -1,5 +1,6 @@
 package com.devops00.plugins.folder.mount.state
 
+import com.devops00.plugins.folder.mount.constant.Common
 import com.intellij.openapi.components.*
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
@@ -7,6 +8,11 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 /**
  * 状态存储,项目级的
+ *
+ * @author Jack Young
+ * @since 0.0.1
+ *
+ * Created on 2026/01/05.
  */
 @State(
     name = "FolderMountState",
@@ -15,7 +21,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 @Service(Service.Level.PROJECT)
 class MountedFoldersState : PersistentStateComponent<MountedFoldersState> {
 
-    private val logger = Logger.getInstance("FolderMount")
+    private val logger = Logger.getInstance(Common.PLUGIN_ID)
 
     private val prefix = "[${this.javaClass.simpleName}]:"
 

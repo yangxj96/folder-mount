@@ -6,6 +6,11 @@ import com.intellij.openapi.util.Condition
 
 /**
  * 条件控制
+ *
+ * @author Jack Young
+ * @since 0.0.1
+ *
+ * Created on 2026/01/05.
  */
 class FolderMountCondition : Condition<Project> {
 
