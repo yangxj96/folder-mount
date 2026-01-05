@@ -1,0 +1,12 @@
+<idea-plugin>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="FolderMount"
+                anchor="right"
+                canCloseContents="true"
+                conditionClass="com.devops00.plugins.folder.mount.FolderMountCondition"
+                factoryClass="com.devops00.plugins.folder.mount.FolderMountToolWindow"/>
+    </extensions>
+</idea-plugin>

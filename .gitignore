@@ -1,0 +1,47 @@
+# ========================
+# IntelliJ Platform Plugin (Gradle) - .gitignore
+# ========================
+
+# Build directories
+/build/
+/out/
+/production/
+/test/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+build/
+.gradle/
+.kotlin
+.intellijPlatform
+
+# IntelliJ IDEA
+.idea/
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/runConfigurations/
+*.iws
+*.iml
+*.ipr
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*~
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Plugin-specific
+# Sandbox directories (used for running/debugging plugin)
+/sandbox/
+
+# Distribution artifacts (you may want to publish via CI, not commit)
+/plugins/
+
+# Local configuration overrides
+/local.properties
