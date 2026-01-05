@@ -1,6 +1,7 @@
 package com.devops00.plugins.folder.mount.node
 
 import com.devops00.plugins.folder.mount.state.MountedFoldersState
+import com.intellij.icons.AllIcons
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
@@ -49,6 +50,7 @@ class RootNode(project: Project) : SimpleNode(project) {
         mounts.map { FileNode(project, it, this) }.toTypedArray()
 
     override fun update(presentation: PresentationData) {
-        presentation.presentableText = "虚拟的根节点"
+        presentation.presentableText = "Virtual Root Node"
+        presentation.setIcon(AllIcons.Nodes.HomeFolder)
     }
 }

@@ -29,7 +29,7 @@ class FolderMountToolWindow : ToolWindowFactory {
         val tree = FolderTree(project)
         panel.add(tree.component, BorderLayout.CENTER)
 
-        val addBtn = JButton("挂载文件夹")
+        val addBtn = JButton("Add Folder")
         addBtn.addActionListener {
             val descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor()
             FileChooser.chooseFile(descriptor, project, null) {
