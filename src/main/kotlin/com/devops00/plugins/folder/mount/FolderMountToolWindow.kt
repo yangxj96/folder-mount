@@ -1,5 +1,7 @@
 package com.devops00.plugins.folder.mount
 
+import com.devops00.plugins.folder.mount.i18n.I18nBundle
+import com.devops00.plugins.folder.mount.node.FolderTree
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileChooser.FileChooser
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
@@ -29,7 +31,7 @@ class FolderMountToolWindow : ToolWindowFactory {
         val tree = FolderTree(project)
         panel.add(tree.component, BorderLayout.CENTER)
 
-        val addBtn = JButton("Add Folder")
+        val addBtn = JButton(I18nBundle.message("node.add"))
         addBtn.addActionListener {
             val descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor()
             FileChooser.chooseFile(descriptor, project, null) {
@@ -38,8 +40,17 @@ class FolderMountToolWindow : ToolWindowFactory {
         }
         panel.add(addBtn, BorderLayout.NORTH)
 
-        val content = ContentFactory.getInstance().createContent(panel, "", false)
+        val content = ContentFactory.getInstance().createContent(
+            panel,
+            "",
+            false
+        )
+        content.isCloseable = false
         toolWindow.contentManager.addContent(content)
+        // 悬浮窗
+        toolWindow.title = I18nBundle.message("plugin.name")
+        // 侧边栏标签显示名称
+        toolWindow.stripeTitle = I18nBundle.message("plugin.name")
     }
 
 }

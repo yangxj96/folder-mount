@@ -1,7 +1,5 @@
-package com.devops00.plugins.folder.mount
+package com.devops00.plugins.folder.mount.node
 
-import com.devops00.plugins.folder.mount.node.FileNode
-import com.devops00.plugins.folder.mount.node.RootNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project

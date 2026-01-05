@@ -1,5 +1,6 @@
 package com.devops00.plugins.folder.mount.node
 
+import com.devops00.plugins.folder.mount.i18n.I18nBundle
 import com.devops00.plugins.folder.mount.state.MountedFoldersState
 import com.intellij.icons.AllIcons
 import com.intellij.ide.projectView.PresentationData
@@ -50,7 +51,7 @@ class RootNode(project: Project) : SimpleNode(project) {
         mounts.map { FileNode(project, it, this) }.toTypedArray()
 
     override fun update(presentation: PresentationData) {
-        presentation.presentableText = "Virtual Root Node"
+        presentation.presentableText = I18nBundle.message("node.root")
         presentation.setIcon(AllIcons.Nodes.HomeFolder)
     }
 }
