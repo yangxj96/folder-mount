@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="16"
+     height="16"
+     viewBox="0 0 16 16">
+    <g fill="none" fill-rule="evenodd">
+        <!-- folder body -->
+        <path
+                d="M1.5 5.5h13v7.5c0 .55-.45 1-1 1h-11c-.55 0-1-.45-1-1V5.5z"
+                fill="#6E6E6E"/>
+
+        <!-- folder tab -->
+        <path
+                d="M1.5 4c0-.55.45-1 1-1h4l1.2 1.5H14.5v1H1.5V4z"
+                fill="#6E6E6E"/>
+    </g>
+</svg>

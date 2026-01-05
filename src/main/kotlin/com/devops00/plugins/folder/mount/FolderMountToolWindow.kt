@@ -32,6 +32,8 @@ class FolderMountToolWindow : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         logger.debug("${prefix}插件在${project.name}上创建了")
         // 窗口设置
+        // 图标
+        toolWindow.setIcon(Icons.FolderMount)
         // 悬浮窗
         toolWindow.title = I18nBundle.message("plugin.name")
         // 侧边栏标签显示名称
