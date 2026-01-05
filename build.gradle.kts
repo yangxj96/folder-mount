@@ -39,6 +39,16 @@ intellijPlatform {
         ideaVersion {
             sinceBuild = "253"
         }
+
+        changeNotes = """
+            <h3>0.0.3</h3>
+            <ul>
+                <li>Support internationalization for plugin UI</li>
+                <li>Add right-click context menu to unmount mounted directories</li>
+                <li>Add plugin icon to improve visibility in IDE</li>
+                <li>Update README and release version</li>
+            </ul>
+        """.trimIndent()
     }
 
     pluginVerification {
@@ -52,11 +62,13 @@ intellijPlatform {
 
     }
 
+
     // 发布使用
     publishing {
 
     }
 }
+
 
 kotlin {
     jvmToolchain(21)
