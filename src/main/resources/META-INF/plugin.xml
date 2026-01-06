@@ -3,12 +3,32 @@
 
     <resource-bundle>messages.I18nBundle</resource-bundle>
 
+    <!-- 通知 -->
+    <notificationGroup
+            id="FolderMount.Notification"
+            displayType="BALLOON"
+            isLogByDefault="true"
+            title="Folder Mount"/>
+
+    <!-- ToolWindow -->
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow
                 id="FolderMount"
                 anchor="right"
                 canCloseContents="true"
-                conditionClass="com.devops00.plugins.folder.mount.FolderMountCondition"
-                factoryClass="com.devops00.plugins.folder.mount.FolderMountToolWindow"/>
+                factoryClass="com.devops00.plugins.folder.mount.toolwindow.FolderMountToolWindow"/>
     </extensions>
+
+    <!-- Actions -->
+    <actions>
+        <group id="FolderMount.Toolbar" popup="false">
+            <action id="FolderMount.Attach"
+                    class="com.devops00.plugins.folder.mount.actions.ActionAttach"
+                    icon="AllIcons.General.Add"/>
+
+            <action id="FolderMount.Refresh"
+                    class="com.devops00.plugins.folder.mount.actions.ActionRefresh"
+                    icon="AllIcons.Actions.Refresh"/>
+        </group>
+    </actions>
 </idea-plugin>

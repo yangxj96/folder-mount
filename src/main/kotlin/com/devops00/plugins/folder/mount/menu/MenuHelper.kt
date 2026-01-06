@@ -1,11 +1,14 @@
 package com.devops00.plugins.folder.mount.menu
 
-import com.devops00.plugins.folder.mount.constant.Common
+import com.devops00.plugins.folder.mount.helper.Common
 import com.devops00.plugins.folder.mount.i18n.I18nBundle
-import com.devops00.plugins.folder.mount.node.FileNode
-import com.devops00.plugins.folder.mount.node.RootNode
+import com.devops00.plugins.folder.mount.state.FolderMountState
+import com.devops00.plugins.folder.mount.tree.FolderNode
+import com.devops00.plugins.folder.mount.tree.RootNode
+import com.devops00.plugins.folder.mount.tree.TreeNode
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.project.Project
 import com.intellij.ui.treeStructure.SimpleTree
 import java.awt.event.MouseEvent
 
@@ -30,15 +33,15 @@ object MenuHelper {
      * @param e 触发的事件
      * @param tree 树
      */
-    fun maybeShowPopup(e: MouseEvent, tree: SimpleTree) {
+    fun maybeShowPopup(e: MouseEvent, tree: SimpleTree, project: Project) {
         if (!e.isPopupTrigger) {
             return
         }
         // 获取节点
         val node = tree.selectedNode ?: return
-        // 当前是FileNode且父级是RootNode
-        if (node is FileNode && node.parent is RootNode) {
-            createRootNodeMenus(node)
+        // 当前是FolderNode且父级是RootNode
+        if (node is FolderNode && node.parent is RootNode) {
+            createRootNodeMenus(node, project)
                 .component
                 .show(tree, e.x, e.y)
         }
@@ -49,13 +52,14 @@ object MenuHelper {
      *
      * @param node 根节点
      */
-    fun createRootNodeMenus(node: FileNode): ActionPopupMenu {
+    fun createRootNodeMenus(node: FolderNode, project: Project): ActionPopupMenu {
         val group = object : ActionGroup() {
             override fun getChildren(e: AnActionEvent?): Array<AnAction> {
                 return arrayOf(object : AnAction(I18nBundle.message("menus.remove")) {
                     override fun actionPerformed(e: AnActionEvent) {
                         logger.debug("${prefix}卸载目录 ${node.name}")
-                        (node.parent as RootNode).removeFolder(node.file)
+                        FolderMountState.getInstance(project).removeFolder(node.file.path)
+                        TreeNode.instance?.refreshTree()
                     }
                 })
             }

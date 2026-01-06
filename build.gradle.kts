@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.devops00.plugins"
-version = "0.0.3"
+version = "0.0.4"
 
 repositories {
     mavenCentral()
@@ -41,12 +41,13 @@ intellijPlatform {
         }
 
         changeNotes = """
-            <h3>0.0.3</h3>
+            <h3>0.0.4</h3>
             <ul>
-                <li>Support internationalization for plugin UI</li>
-                <li>Add right-click context menu to unmount mounted directories</li>
-                <li>Add plugin icon to improve visibility in IDE</li>
-                <li>Update README and release version</li>
+                <li>Completely refactored the folder tree implementation for better performance and expandability</li>
+                <li>Added a toolbar with actions: attach folder and refresh</li>
+                <li>Implemented an empty panel view when no folders are mounted, improving UX</li>
+                <li>Enhanced tree behavior for multi-level folder display and incremental refresh</li>
+                <li>Minor UI improvements and bug fixes</li>
             </ul>
         """.trimIndent()
     }

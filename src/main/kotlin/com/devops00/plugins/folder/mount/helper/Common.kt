@@ -1,4 +1,4 @@
-package com.devops00.plugins.folder.mount.constant
+package com.devops00.plugins.folder.mount.helper
 
 /**
  * 常量
@@ -12,6 +12,16 @@ object Common {
 
     /** 插件ID **/
     const val PLUGIN_ID = "FolderMount"
+
+    /**
+     * toolbar的ID,对应plugin.xml里面的
+     */
+    const val TOOLBAR_ID = "FolderMount.Toolbar"
+
+    /**
+     * 通知ID
+     */
+    const val GROUP_ID = "FolderMount.Notification"
 
     /** 根节点菜单名称 **/
     const val MENU_ROOT_NODE = "FolderMountRootNodePopup"
