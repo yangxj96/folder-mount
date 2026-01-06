@@ -24,7 +24,7 @@
         <group id="FolderMount.Toolbar" popup="false">
             <action id="FolderMount.Attach"
                     class="com.devops00.plugins.folder.mount.actions.ActionAttach"
-                    icon="AllIcons.General.Add"/>
+                    icon="AllIcons.Nodes.Folder"/>
 
             <action id="FolderMount.Refresh"
                     class="com.devops00.plugins.folder.mount.actions.ActionRefresh"
