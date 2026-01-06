@@ -28,7 +28,13 @@ intellijPlatform {
     pluginConfiguration {
         id = "folder.mount"
         name = "Folder Mount"
-        description = "This plugin allows developers to mount additional directories into the project view for easier navigation and management."
+        description = """
+                    Mount external folders into your project and work with them like local directories —
+                    no file copying, no symbolic links.
+                    
+                    将项目外部目录挂载到当前项目中，像本地目录一样进行浏览和编辑，
+                    无需复制文件或创建软链接。
+                    """.trimIndent()
         vendor {
             name = "yangxj96"
             email = "yangxj96@gmail.com"
