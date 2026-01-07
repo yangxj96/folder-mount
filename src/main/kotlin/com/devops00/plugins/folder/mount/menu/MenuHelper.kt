@@ -46,16 +46,19 @@ object MenuHelper {
         val group = object : ActionGroup() {
             override fun getChildren(e: AnActionEvent?): Array<AnAction> {
                 val actions = mutableListOf<AnAction>()
-                // 是文件节点则多一个新增文件的节点
+                // 是文件节点则添加 新增文件和新增文件夹的菜单
                 if (node is FolderNode) {
                     actions += FileNewAction(project, node)
-                }
-                // 是文件节点,且父级是根节点,说明是第一层,添加一个删除菜单
-                if (node is FolderNode && node.parent is RootNode) {
-                    actions += FolderRemoveAction(project, node)
+                    actions += FileNewDirAction(project, node)
                 }
                 // 删除文件或目录
                 actions += FileDelAction(project, node)
+                // 分隔符
+                actions += Separator.getInstance()
+                // 是文件节点,且父级是根节点,说明是第一层,添加一个删除菜单
+                if (node is FolderNode && node.parent is RootNode) {
+                    actions += FolderDetachAction(project, node)
+                }
                 // 以后新增菜单只加一行
                 return actions.toTypedArray()
             }

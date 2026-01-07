@@ -22,7 +22,7 @@
     <actions>
         <group id="FolderMount.Toolbar" popup="false">
             <action id="FolderMount.Attach"
-                    class="com.devops00.plugins.folder.mount.actions.ActionAttach"
+                    class="com.devops00.plugins.folder.mount.actions.ActionFolderAttach"
                     icon="AllIcons.Nodes.Folder"/>
 
             <action id="FolderMount.Refresh"

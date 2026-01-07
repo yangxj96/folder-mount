@@ -16,7 +16,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptor
  *
  * Created on 2026/01/06.
  */
-class ActionAttach : AnAction(I18nBundle.message("menus.add")) {
+class ActionFolderAttach : AnAction(I18nBundle.message("menus.add")) {
 
 
     override fun actionPerformed(e: AnActionEvent) {

@@ -3,6 +3,7 @@ package com.devops00.plugins.folder.mount.menu
 import com.devops00.plugins.folder.mount.i18n.I18nBundle
 import com.devops00.plugins.folder.mount.tree.FolderNode
 import com.devops00.plugins.folder.mount.tree.TreeNode
+import com.intellij.icons.AllIcons
 import com.intellij.ide.fileTemplates.FileTemplateManager
 import com.intellij.ide.fileTemplates.ui.CreateFromTemplateDialog
 import com.intellij.openapi.actionSystem.AnAction
@@ -15,7 +16,11 @@ import com.intellij.util.application
 /**
  * 新建文件菜单
  */
-class FileNewAction(private val project: Project, private val node: FolderNode) : AnAction(I18nBundle.message("menus.file.newfile")) {
+class FileNewAction(private val project: Project, private val node: FolderNode) : AnAction(
+    I18nBundle.message("menus.file.newfile"),
+    "",
+    AllIcons.FileTypes.Text
+) {
 
     override fun actionPerformed(e: AnActionEvent) {
 
