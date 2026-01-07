@@ -23,7 +23,4 @@ object Common {
      */
     const val GROUP_ID = "FolderMount.Notification"
 
-    /** 根节点菜单名称 **/
-    const val MENU_ROOT_NODE = "FolderMountRootNodePopup"
-
 }

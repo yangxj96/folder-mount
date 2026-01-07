@@ -17,6 +17,12 @@
                 anchor="right"
                 canCloseContents="true"
                 factoryClass="com.devops00.plugins.folder.mount.toolwindow.FolderMountToolWindow"/>
+
+        <fileTemplate
+                id="EmptyFile"
+                fileName="EmptyFile"
+                extension=""
+                description="我的自定义模板"/>
     </extensions>
 
     <!-- Actions -->

@@ -1,14 +1,12 @@
 package com.devops00.plugins.folder.mount.menu
 
 import com.devops00.plugins.folder.mount.helper.Common
-import com.devops00.plugins.folder.mount.i18n.I18nBundle
-import com.devops00.plugins.folder.mount.state.FolderMountState
 import com.devops00.plugins.folder.mount.tree.FolderNode
 import com.devops00.plugins.folder.mount.tree.RootNode
-import com.devops00.plugins.folder.mount.tree.TreeNode
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
+import com.intellij.ui.treeStructure.SimpleNode
 import com.intellij.ui.treeStructure.SimpleTree
 import java.awt.event.MouseEvent
 
@@ -39,12 +37,10 @@ object MenuHelper {
         }
         // 获取节点
         val node = tree.selectedNode ?: return
-        // 当前是FolderNode且父级是RootNode
-        if (node is FolderNode && node.parent is RootNode) {
-            createRootNodeMenus(node, project)
-                .component
-                .show(tree, e.x, e.y)
-        }
+        // 创建节点且显示
+        createNodeMenus(node, project)
+            .component
+            .show(tree, e.x, e.y)
     }
 
     /**
@@ -52,22 +48,30 @@ object MenuHelper {
      *
      * @param node 根节点
      */
-    fun createRootNodeMenus(node: FolderNode, project: Project): ActionPopupMenu {
+    fun createNodeMenus(node: SimpleNode, project: Project): ActionPopupMenu {
+        logger.debug("${prefix}创建右键菜单")
+
         val group = object : ActionGroup() {
             override fun getChildren(e: AnActionEvent?): Array<AnAction> {
-                return arrayOf(object : AnAction(I18nBundle.message("menus.remove")) {
-                    override fun actionPerformed(e: AnActionEvent) {
-                        logger.debug("${prefix}卸载目录 ${node.name}")
-                        FolderMountState.getInstance(project).removeFolder(node.file.path)
-                        TreeNode.instance?.refreshTree()
-                    }
-                })
+                val actions = mutableListOf<AnAction>()
+                // 是文件节点则多一个新增文件的节点
+                if (node is FolderNode) {
+                    actions += FileNewAction(project, node)
+                }
+                // 是文件节点,且父级是根节点,说明是第一层,添加一个删除菜单
+                if (node is FolderNode && node.parent is RootNode) {
+                    actions += FolderRemoveAction(project, node)
+                }
+                // 删除文件或目录
+                actions += FileDelAction(project, node)
+                // 以后新增菜单只加一行
+                return actions.toTypedArray()
             }
         }
 
         return ActionManager
             .getInstance()
-            .createActionPopupMenu(Common.MENU_ROOT_NODE, group)
+            .createActionPopupMenu("FolderMountRootNodePopup", group)
     }
 
 }

@@ -68,6 +68,7 @@ class TreeNode(project: Project) : SimpleTree() {
                 MenuHelper.maybeShowPopup(e, this@TreeNode, project)
             }
         })
+
     }
 
     /**
