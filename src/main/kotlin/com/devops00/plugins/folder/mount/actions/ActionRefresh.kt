@@ -16,6 +16,13 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 class ActionRefresh : AnAction(I18nBundle.message("menus.refresh")) {
 
     override fun actionPerformed(e: AnActionEvent) {
-        TreeNode.instance?.refreshTree()
+        val tree = TreeNode.instance ?: return
+        val node = tree.selectedNode
+        if (node != null) {
+            tree.refresh(node)
+        } else {
+            tree.refresh()
+        }
+
     }
 }

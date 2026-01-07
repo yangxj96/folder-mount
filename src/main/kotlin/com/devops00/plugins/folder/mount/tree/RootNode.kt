@@ -45,13 +45,6 @@ class RootNode(project: Project) : SimpleNode() {
             .forEach { folders += it }
     }
 
-    fun refresh() {
-        initData()
-        folders.forEach {
-            it.refresh(false, true)
-        }
-    }
-
     override fun isAlwaysLeaf(): Boolean = false
 
     override fun getChildren(): Array<out SimpleNode?> =

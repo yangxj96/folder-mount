@@ -3,20 +3,13 @@
 
     <resource-bundle>messages.I18nBundle</resource-bundle>
 
-    <!-- 通知 -->
-    <notificationGroup
-            id="FolderMount.Notification"
-            displayType="BALLOON"
-            isLogByDefault="true"
-            title="Folder Mount"/>
-
     <!-- ToolWindow -->
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow
                 id="FolderMount"
                 anchor="right"
                 canCloseContents="true"
-                factoryClass="com.devops00.plugins.folder.mount.toolwindow.FolderMountToolWindow"/>
+                factoryClass="com.devops00.plugins.folder.mount.ui.FolderMountToolWindow"/>
 
         <fileTemplate
                 id="EmptyFile"

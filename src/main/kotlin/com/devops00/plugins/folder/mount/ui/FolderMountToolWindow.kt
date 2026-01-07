@@ -1,4 +1,4 @@
-package com.devops00.plugins.folder.mount.toolwindow
+package com.devops00.plugins.folder.mount.ui
 
 import com.devops00.plugins.folder.mount.helper.Common
 import com.devops00.plugins.folder.mount.i18n.I18nBundle

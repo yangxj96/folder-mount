@@ -5,6 +5,7 @@ import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.ui.tree.AsyncTreeModel
 import com.intellij.ui.tree.StructureTreeModel
+import com.intellij.ui.treeStructure.SimpleNode
 import com.intellij.ui.treeStructure.SimpleTree
 import com.intellij.ui.treeStructure.SimpleTreeStructure
 import java.awt.event.MouseAdapter
@@ -74,9 +75,16 @@ class TreeNode(project: Project) : SimpleTree() {
     /**
      * 刷新树
      */
-    fun refreshTree() {
-        rootNode.refresh()
+    fun refresh() {
+        rootNode.initData()
         this.structureModel.invalidateAsync()
+    }
+
+    /**
+     * 刷新,根据NODE
+     */
+    fun refresh(node: SimpleNode) {
+        this.structureModel.invalidateAsync(node, true)
     }
 
     /**

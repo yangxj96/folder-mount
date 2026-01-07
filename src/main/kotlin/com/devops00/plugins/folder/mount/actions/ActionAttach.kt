@@ -27,6 +27,6 @@ class ActionAttach : AnAction(I18nBundle.message("menus.add")) {
         )
         val folder = FileChooser.chooseFile(descriptor, project, null) ?: return
         FolderMountState.getInstance(project).addFolder(folder.path)
-        TreeNode.instance?.refreshTree()
+        TreeNode.instance?.refresh()
     }
 }

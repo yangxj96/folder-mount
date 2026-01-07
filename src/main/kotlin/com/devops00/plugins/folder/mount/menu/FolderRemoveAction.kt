@@ -25,6 +25,6 @@ class FolderRemoveAction(private val project: Project, private val node: FolderN
     override fun actionPerformed(p0: AnActionEvent) {
         logger.debug("${prefix}卸载目录 ${node.name}")
         FolderMountState.getInstance(project).removeFolder(node.file.path)
-        TreeNode.instance?.refreshTree()
+        TreeNode.instance?.refresh()
     }
 }
