@@ -3,6 +3,7 @@ package com.devops00.plugins.folder.mount.menu
 import com.devops00.plugins.folder.mount.helper.Common
 import com.devops00.plugins.folder.mount.i18n.I18nBundle
 import com.devops00.plugins.folder.mount.tree.FolderNode
+import com.devops00.plugins.folder.mount.tree.TreeNode
 import com.intellij.ide.fileTemplates.FileTemplateManager
 import com.intellij.ide.fileTemplates.ui.CreateFromTemplateDialog
 import com.intellij.openapi.actionSystem.AnAction
@@ -38,6 +39,7 @@ class FileNewAction(private val project: Project, private val node: FolderNode) 
         dialog.title = "创建文件"
         dialog.show()
 
+
         application.invokeLater {
             val after = targetDir.virtualFile.children
 
@@ -46,6 +48,9 @@ class FileNewAction(private val project: Project, private val node: FolderNode) 
             if (created != null) {
                 PsiManager.getInstance(project).findFile(created)?.let {
                     // 这里刷新进行无感刷新
+                    val tree = TreeNode.instance ?: return@let
+                    val node = tree.selectedNode ?: return@let
+                    tree.refresh(node)
                 }
             }
         }

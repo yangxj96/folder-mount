@@ -8,6 +8,7 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.ui.treeStructure.SimpleNode
 import com.intellij.ui.treeStructure.SimpleTree
+import kotlinx.html.Entities
 import java.awt.event.MouseEvent
 
 
@@ -69,9 +70,9 @@ object MenuHelper {
             }
         }
 
-        return ActionManager
+       return ActionManager
             .getInstance()
-            .createActionPopupMenu("FolderMountRootNodePopup", group)
+            .createActionPopupMenu(ActionPlaces.UNKNOWN, group)
     }
 
 }
