@@ -1,6 +1,5 @@
 package com.devops00.plugins.folder.mount.menu
 
-import com.devops00.plugins.folder.mount.helper.Common
 import com.devops00.plugins.folder.mount.i18n.I18nBundle
 import com.devops00.plugins.folder.mount.tree.FolderNode
 import com.devops00.plugins.folder.mount.tree.TreeNode
@@ -8,7 +7,6 @@ import com.intellij.ide.fileTemplates.FileTemplateManager
 import com.intellij.ide.fileTemplates.ui.CreateFromTemplateDialog
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiManager
 import com.intellij.util.application
@@ -17,14 +15,9 @@ import com.intellij.util.application
 /**
  * 新建文件菜单
  */
-class FileNewAction(private val project: Project, private val node: FolderNode) : AnAction(I18nBundle.message("menus.file.new")) {
-
-    private val logger = Logger.getInstance(Common.PLUGIN_ID)
-
-    private val prefix = "[${this.javaClass.simpleName}]:"
+class FileNewAction(private val project: Project, private val node: FolderNode) : AnAction(I18nBundle.message("menus.file.newfile")) {
 
     override fun actionPerformed(e: AnActionEvent) {
-        logger.info("${prefix}创建文件")
 
         val targetDir = PsiManager.getInstance(project)
             .findDirectory(node.file) ?: return

@@ -1,14 +1,11 @@
 package com.devops00.plugins.folder.mount.menu
 
-import com.devops00.plugins.folder.mount.helper.Common
 import com.devops00.plugins.folder.mount.tree.FolderNode
 import com.devops00.plugins.folder.mount.tree.RootNode
 import com.intellij.openapi.actionSystem.*
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.ui.treeStructure.SimpleNode
 import com.intellij.ui.treeStructure.SimpleTree
-import kotlinx.html.Entities
 import java.awt.event.MouseEvent
 
 
@@ -21,10 +18,6 @@ import java.awt.event.MouseEvent
  * Created on 2026/01/05.
  */
 object MenuHelper {
-
-    private val logger = Logger.getInstance(Common.PLUGIN_ID)
-
-    private val prefix = "[${this.javaClass.simpleName}]:"
 
     /**
      * 判断是否要弹出菜单
@@ -50,8 +43,6 @@ object MenuHelper {
      * @param node 根节点
      */
     fun createNodeMenus(node: SimpleNode, project: Project): ActionPopupMenu {
-        logger.debug("${prefix}创建右键菜单")
-
         val group = object : ActionGroup() {
             override fun getChildren(e: AnActionEvent?): Array<AnAction> {
                 val actions = mutableListOf<AnAction>()
@@ -70,7 +61,7 @@ object MenuHelper {
             }
         }
 
-       return ActionManager
+        return ActionManager
             .getInstance()
             .createActionPopupMenu(ActionPlaces.UNKNOWN, group)
     }
